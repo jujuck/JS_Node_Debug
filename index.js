@@ -1,12 +1,14 @@
 import wilders from "./wilder.json" assert { type: "json" };
 
 import readline from "readline";
+
 const prompt = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-console.info("Bienvenu dans votre editeur de recherche de wilders");
+console.info("Bienvenue dans votre éditeur de recherche de wilders");
+
 (() => {
   prompt.question(
     "Saisissez la méthode de recherche (nom, pays, salaire, profession) : ",
@@ -23,7 +25,7 @@ const log = (result) => {
     console.error("🚫 Aucun résultat trouvé");
   } else {
     console.log(result);
-    console.log("✅️ voici les résultats trouvés");
+    console.log("✅️ Voici les résultats trouvés");
   }
 };
 
@@ -42,11 +44,12 @@ const chooseMethode = (method) => {
     filterByProfession();
   } else {
     console.error("Méthode de recherche inconnue");
+    exit(1);
   }
 };
 
 /**
- * Récupération des wilders dont le nom contient un partie ou tout du nom saisi
+ * Récupération des wilders dont le nom contient le texte saisi
  */
 const fitlerByNames = () => {
   prompt.question(
@@ -86,7 +89,7 @@ const filterBySalary = () => {
 };
 
 /**
- * Récupération des wilders dont la profession contient un partie ou tout de la profession saisi
+ * Récupération des wilders dont la profession contient le texte saisi
  */
 const filterByProfession = () => {
   prompt.question(
